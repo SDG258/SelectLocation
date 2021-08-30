@@ -14,15 +14,15 @@
 <body>
     <label for=""></label>
     <select name="province" id="province" onchange="SetProvince(value)">
-        <option>---Select District---</option>
+        <option>--Select District--</option>
     </select>
     <label for=""></label>
     <select name="district" id="district" onchange="SetDistrict(value)">
-        <option disabled>---Select District---</option>
+        <option disabled>--Select District--</option>
     </select>
     <label for=""></label>
     <select name="ward" id="ward">
-        <option disabled>---Select Ward---</option>
+        <option disabled>--Select Ward--</option>
     </select>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
@@ -73,9 +73,21 @@
             });
         }
         $(document).ready(function () {
-            $('#province').select2();
-            $('#district').select2();
-            $('#ward').select2();
+            $('#province').select2({
+                placeholder: "Select Province",
+                allowClear: true
+            });
+            $('#province').on('change', function () {
+                $("#ward").empty();
+            })
+            $('#district').select2({
+                placeholder: "Select District",
+                allowClear: true
+            });
+            $('#ward').select2({
+                placeholder: "Select Ward",
+                allowClear: true
+            });
         });
     </script>
 </body>
